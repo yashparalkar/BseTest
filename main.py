@@ -1,5 +1,7 @@
 from pushbullet import PushBullet
 from bsedata.bse import BSE
+from datetime import datetime, time
+print(datetime.now())
 access_token = "o.C5GgjDpMQ8j4OOjRiFFPyYZYZFifItOU"
 pb = PushBullet(access_token)
 
