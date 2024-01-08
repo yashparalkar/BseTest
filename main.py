@@ -11,4 +11,4 @@ codes = [
     532666, 542655, 543688, 535113, 542655
 ]
 s=bse.getQuote('543272')
-pb.pushnote('h', s['currentValue'])
+pb.push_note('h', s['currentValue'])
