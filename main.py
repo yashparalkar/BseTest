@@ -25,9 +25,8 @@ stock_history = [{code: None
                   for code in codes}]
 
 # Define the trading hours
-start_time = time(1, 5)
-end_time = time(23, 0)
-print(datetime.now())
+start_time = time(3, 30)
+end_time = time(10, 0)
 
 while True:
   now = datetime.now()
@@ -59,7 +58,7 @@ while True:
                  float(stock_history[1][code]['currentValue'])) /
                 float(stock_history[1][code]['currentValue'])) * 100
 
-            if abs(percent_change_30min_ago) >= 0 or abs(
+            if abs(percent_change_30min_ago) >= 1 or abs(
                 percent_change_15min_ago) >= 1:
               # Send an email notification
               subject = f"Stock {stock_history[0][code]['companyName']} Swing Alert"
@@ -91,4 +90,4 @@ while True:
           print(f"Ignoring inactive stock with code {code}: {e}")
 
   # Sleep for a minute before checking again
-  t.sleep(60)
+  t.sleep(900)
