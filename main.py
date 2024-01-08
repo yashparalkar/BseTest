@@ -25,8 +25,8 @@ stock_history = [{code: None
                   for code in codes}]
 
 # Define the trading hours
-start_time = time(3, 30)
-end_time = time(24, 0)
+start_time = time(0, 0)
+end_time = time(23,59)
 print(datetime.now())
 
 while True:
