@@ -45,7 +45,7 @@ while True:
                     float(stock_history[1][code]['currentValue'])) * 100
             
                 if abs(percent_change_30min_ago) >= 1 or abs(
-                    percent_change_15min_ago) >= 0:
+                    percent_change_15min_ago) >= 1:
                   # Send an email notification
                       subject = f"Stock {stock_history[0][code]['companyName']} Swing Alert"
                       body = f"Stock {stock_history[0][code]['companyName']} has changed "
@@ -58,10 +58,22 @@ while True:
                       message = f"Subject: {subject}\n\n{body}"
                     
                       push = pb.push_note(subject, body)
+                      try:
+                          conn = http.client.HTTPSConnection("api.pushover.net:443")
+                          conn.request(
+                              "POST", "/1/messages.json",
+                              urllib.parse.urlencode({
+                                "token": "ae7qnfbucxiojph9pip8ht4snfj2ji",
+                                "user": "uuxzqfp8x77jkib2ymb8a65ub1688h",
+                                "message": f"{subject}\n{body}",
+                            }), {"Content-type": "application/x-www-form-urlencoded"})
+                          conn.getresponse()
+                      finally:
+                          conn.close()
                     
         except bsedata.exceptions.InvalidStockException as e:
           print(f"Ignoring inactive stock with code {code}: {e}")
 
   # Sleep for a minute before checking again
-    t.sleep(60)
+    t.sleep(900)
 
