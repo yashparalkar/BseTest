@@ -46,8 +46,8 @@ while True:
                      float(stock_history[1][code]['currentValue'])) /
                     float(stock_history[1][code]['currentValue'])) * 100
             
-                if abs(percent_change_30min_ago) >= 0 or abs(
-                    percent_change_15min_ago) >= 0:
+                if abs(percent_change_30min_ago) >= 1 or abs(
+                    percent_change_15min_ago) >= 1:
                   # Send an email notification
                       subject = f"Stock {stock_history[0][code]['companyName']} Swing Alert"
                       body = f"Stock {stock_history[0][code]['companyName']} has changed "
