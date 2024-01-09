@@ -13,10 +13,8 @@ pb = PushBullet(access_token)
 bse = BSE(update_codes=True)
 
 stocks = []
-codes = [
-    543272, 532368, 532648, 532670, 539436, 543331, 532667, 500285, 532822,
-    532666, 542655, 543688, 535113, 542655
-]
+codes = [ 543272, 532368, 532648, 532670, 539436, 543331, 532667, 500285, 532822,
+    532666, 542655, 543688]
 stock_history = [{code: None
                   for code in codes}, {code: None
                                        for code in codes},
