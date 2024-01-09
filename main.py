@@ -5,6 +5,8 @@ import bsedata
 from bsedata.bse import BSE
 import http.client, urllib
 from keep_alive import keep_alive
+import logging
+from requests.exceptions import RequestException
 
 keep_alive()
 access_token = "o.C5GgjDpMQ8j4OOjRiFFPyYZYZFifItOU"
@@ -57,7 +59,10 @@ while True:
                       body += f"Current Value: {stock_history[0][code]['currentValue']}\n"
                       message = f"Subject: {subject}\n\n{body}"
                     
-                      push = pb.push_note(subject, body)
+                      try:
+                          push = pb.push_note(subject, body)
+                      except RequestException as e:
+                          logging.error(f"Request Exception: {e}", exc_info=True)
                       try:
                           conn = http.client.HTTPSConnection("api.pushover.net:443")
                           conn.request(
@@ -74,8 +79,8 @@ while True:
                           conn.close()
                     
         except bsedata.exceptions.InvalidStockException as e:
-          print(f"Ignoring inactive stock with code {code}: {e}")
+            print(f"Ignoring inactive stock with code {code}: {e}")
 
   # Sleep for a minute before checking again
-    t.sleep(600)
+    t.sleep(900)
 
