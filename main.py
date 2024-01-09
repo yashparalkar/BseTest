@@ -44,8 +44,8 @@ while True:
                      float(stock_history[1][code]['currentValue'])) /
                     float(stock_history[1][code]['currentValue'])) * 100
             
-                if abs(percent_change_30min_ago) >= 0.1 or abs(
-                    percent_change_15min_ago) >= 0.1:
+                if abs(percent_change_30min_ago) >= 0 or abs(
+                    percent_change_15min_ago) >= 0:
                   # Send an email notification
                       subject = f"Stock {stock_history[0][code]['companyName']} Swing Alert"
                       body = f"Stock {stock_history[0][code]['companyName']} has changed "
@@ -68,6 +68,8 @@ while True:
                                 "message": f"{subject}\n{body}",
                             }), {"Content-type": "application/x-www-form-urlencoded"})
                           conn.getresponse()
+                      except Exception as e:
+                          print(f"ConnectionError: {e}")
                       finally:
                           conn.close()
                     
