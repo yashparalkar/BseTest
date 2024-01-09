@@ -25,6 +25,6 @@ stock_history = [{code: None
 
 # Define the trading hours
 for code in codes:
-  stocks.append(getQuote(str(code)))
+  stocks.append(bse.getQuote(str(code)))
   for stock in stocks:
     pb.push_note("Stock Price", f"Price of {stock['companyName']} is {stock['currentValue']}")
