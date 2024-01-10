@@ -63,6 +63,7 @@ while True:
                           push = pb.push_note(subject, body)
                       except RequestException as e:
                           logging.error(f"Request Exception: {e}", exc_info=True)
+                      conn = None
                       try:
                           conn = http.client.HTTPSConnection("api.pushover.net:443")
                           conn.request(
@@ -76,7 +77,8 @@ while True:
                       except Exception as e:
                           print(f"ConnectionError: {e}")
                       finally:
-                          conn.close()
+                          if conn:
+                              conn.close()
                     
         except bsedata.exceptions.InvalidStockException as e:
             print(f"Ignoring inactive stock with code {code}: {e}")
