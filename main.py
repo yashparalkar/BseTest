@@ -9,7 +9,7 @@ import logging
 from requests.exceptions import RequestException
 
 keep_alive()
-access_token = "o.C5GgjDpMQ8j4OOjRiFFPyYZYZFifItOU"
+access_token = "o.PijJLdsMPnEQjdGtjHB6dun82WgRGrmt"
 pb = PushBullet(access_token)
 
 bse = BSE(update_codes=True)
