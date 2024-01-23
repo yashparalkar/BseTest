@@ -25,7 +25,7 @@ stock_history = [{code: None for code in codes}, {code: None for code in codes},
 while True:
     now = datetime.now()
     if now.weekday() in range(0, 5):
-        if start_time <= now.time() <= end_time
+        if start_time <= now.time() <= end_time:
     # Check if it's within trading hours
             for _i, code in enumerate(codes):
                 try:
