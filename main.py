@@ -10,8 +10,6 @@ from requests.exceptions import RequestException
 import os
 
 keep_alive()
-access_token = os.environ.get('pbKey')
-pb = PushBullet(access_token)
 
 bse = BSE(update_codes=True)
 start_time = time(3, 0)
@@ -67,11 +65,6 @@ while True:
                               message = f"Subject: {subject}\n\n{body}"
                             
                               try:
-                                  push = pb.push_note(subject, body)
-                              except RequestException as e:
-                                  logging.error(f"Request Exception: {e}", exc_info=True)
-                              conn = None
-                              try:
                                   conn = http.client.HTTPSConnection("api.pushover.net:443")
                                   conn.request(
                                       "POST", "/1/messages.json",
@@ -81,6 +74,15 @@ while True:
                                         "message": f"{subject}\n{body}",
                                     }), {"Content-type": "application/x-www-form-urlencoded"})
                                   conn.getresponse()
+                                  conn1 = http.client.HTTPSConnection("api.pushover.net:443")
+                                  conn1.request(
+                                      "POST", "/1/messages.json",
+                                      urllib.parse.urlencode({
+                                        "token": os.environ.get('my_token'),
+                                        "user": os.environ.get("my_user_id"),
+                                        "message": f"{subject}\n{body}",
+                                    }), {"Content-type": "application/x-www-form-urlencoded"})
+                                  conn1.getresponse()
                               except Exception as e:
                                   print(f"ConnectionError: {e}")
                               finally:
