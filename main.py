@@ -87,6 +87,7 @@ while True:
                               finally:
                                   if conn:
                                       conn.close()
+                                      conn1.close()
                             
                 except bsedata.exceptions.InvalidStockException as e:
                     print(f"Ignoring inactive stock with code {code}: {e}")
