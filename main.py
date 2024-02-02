@@ -16,7 +16,7 @@ end_time = time(10, 30)
 
 stocks = []
 codes = [ 543272, 532368, 532648, 532670, 539436, 543331, 532667, 500285, 532822,
-     542655, 543688]
+     542655, 543688, 500116]
 stock_history = [{code: None for code in codes}, {code: None for code in codes}, {code: None for code in codes}]
 
 # Define the trading hours
@@ -50,8 +50,8 @@ while True:
                              float(stock_history[1][code]['currentValue'])) /
                             float(stock_history[1][code]['currentValue'])) * 100
                     
-                        if abs(percent_change_30min_ago) >= 1 or abs(
-                            percent_change_15min_ago) >= 1:
+                        if abs(percent_change_30min_ago) >= 1.5 or abs(
+                            percent_change_15min_ago) >= 1.5:
                           # Send an email notification
                               subject = f"Stock {stock_history[0][code]['companyName']} Swing Alert"
                               body = f"Stock {stock_history[0][code]['companyName']} has changed "
