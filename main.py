@@ -57,7 +57,7 @@ while True:
                               body = f"Stock {stock_history[0][code]['companyName']} has changed "
                               body += f"by {percent_change_15min_ago:.2f}% in the last 15 minutes\n\n" if abs(
                                   percent_change_15min_ago
-                              ) >= 1 else f"by {percent_change_30min_ago:.2f}% in the last 30 minutes.\n\n"
+                              ) >= 1.5 else f"by {percent_change_30min_ago:.2f}% in the last 30 minutes.\n\n"
                               body += f"30min Ago Value: {stock_history[2][code]['currentValue']}\n"
                               body += f"15min Ago Value: {stock_history[1][code]['currentValue']}\n"
                               body += f"Current Value: {stock_history[0][code]['currentValue']}\n"
