@@ -27,7 +27,7 @@ conn1.request(
    urllib.parse.urlencode({
      "token": os.environ.get('my_token'),
      "user": os.environ.get("my_user_id"),
-     "message": f"",
+     "message": f"time: {now}",
  }), {"Content-type": "application/x-www-form-urlencoded"})
 conn1.getresponse()
 t.sleep(900)
