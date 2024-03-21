@@ -11,8 +11,8 @@ import os
 keep_alive()
 
 bse = BSE(update_codes=True)
-start_time = time(3, 0)
-end_time = time(10, 30)
+start_time = time(9, 0)
+end_time = time(40, 0)
 
 stocks = []
 codes = [ 543272, 532368, 532648, 532670, 539436, 543331, 532667, 500285, 532822,
