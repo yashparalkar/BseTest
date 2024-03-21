@@ -21,6 +21,7 @@ codes = [ 543272, 532368, 532648, 532670, 539436, 543331, 532667, 500285, 532822
 stock_history = [{code: None for code in codes}, {code: None for code in codes}, {code: None for code in codes}]
 
 # Define the trading hours
+conn1 = http.client.HTTPSConnection("api.pushover.net:443")
 conn1.request(
    "POST", "/1/messages.json",
    urllib.parse.urlencode({
