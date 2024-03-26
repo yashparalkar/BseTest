@@ -50,8 +50,8 @@ while True:
                              float(stock_history[1][code]['currentValue'])) /
                             float(stock_history[1][code]['currentValue'])) * 100
                     
-                        if abs(percent_change_30min_ago) >= 1.5 or abs(
-                            percent_change_15min_ago) >= 0.01:
+                        if abs(percent_change_30min_ago) >= 0 or abs(
+                            percent_change_15min_ago) >= 0:
                           # Send an email notification
                               subject = f"Stock {stock_history[0][code]['companyName']} Swing Alert"
                               body = f"Stock {stock_history[0][code]['companyName']} has changed "
@@ -76,8 +76,8 @@ while True:
                               except Exception as e:
                                   print(f"ConnectionError: {e}")
                               finally:
-                                  if conn:
-                                      conn.close()
+                                  if conn1:
+                                      #conn.close()
                                       conn1.close()
                             
                 except bsedata.exceptions.InvalidStockException as e:
