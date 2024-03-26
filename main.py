@@ -94,4 +94,4 @@ while True:
                     print(f"Ignoring inactive stock with code {code}: {e}")
 
   # Sleep for a minute before checking again
-    t.sleep(600)
+    t.sleep(90)
