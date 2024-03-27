@@ -15,7 +15,9 @@ start_time = time(3, 0)
 end_time = time(14, 30)
 
 stocks = []
-codes = [ 543272, 532368]
+# codes = [ 543272, 532368, 532648, 532670, 539436, 543331, 532667, 500285, 532822,
+#      542655, 543688, 500116]
+codes = [543272, 532368]
 stock_history = [{code: None for code in codes}, {code: None for code in codes}, {code: None for code in codes}]
 
 # Define the trading hours
@@ -64,15 +66,15 @@ while True:
                             message = f"Subject: {subject}\n\n{body}"
                         
                             try:
-                                conn = http.client.HTTPSConnection("api.pushover.net:443")
-                                conn.request(
-                                     "POST", "/1/messages.json",
-                                     urllib.parse.urlencode({
-                                     "token": os.environ.get('token'),
-                                     "user": os.environ.get("user"),
-                                     "message": f"{subject}\n{body}",
-                                }), {"Content-type": "application/x-www-form-urlencoded"})
-                                conn.getresponse()
+                                # conn = http.client.HTTPSConnection("api.pushover.net:443")
+                                # conn.request(
+                                #      "POST", "/1/messages.json",
+                                #      urllib.parse.urlencode({
+                                #      "token": os.environ.get('token'),
+                                #      "user": os.environ.get("user"),
+                                #      "message": f"{subject}\n{body}",
+                                # }), {"Content-type": "application/x-www-form-urlencoded"})
+                                # conn.getresponse()
                                 conn1 = http.client.HTTPSConnection("api.pushover.net:443")
                                 conn1.request(
                                     "POST", "/1/messages.json",
@@ -86,7 +88,7 @@ while True:
                                 print(f"ConnectionError: {e}")
                             finally:
                                 if conn1:
-                                    conn.close()
+                                    # conn.close()
                                     conn1.close()
                             
                 except bsedata.exceptions.InvalidStockException as e:
