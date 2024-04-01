@@ -14,9 +14,9 @@ bse = BSE(update_codes=True)
 start_time = time(3, 0)
 end_time = time(19, 30)
 
-codes = [ 543272, 532368, 532648, 532670, 539436, 543331, 532667, 500285, 532822,
-     542655, 543688, 500116]
-# codes = [543272, 532368]
+# codes = [ 543272, 532368, 532648, 532670, 539436, 543331, 532667, 500285, 532822,
+#      542655, 543688, 500116]
+codes = [543272, 532368]
 stock_history = [{code: None for code in codes}, {code: None for code in codes}, {code: None for code in codes}]
 
 # Define the trading hours
