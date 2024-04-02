@@ -16,7 +16,7 @@ end_time = time(23, 30)
 
 # codes = [ 543272, 532368, 532648, 532670, 539436, 543331, 532667, 500285, 532822,
 #      542655, 543688, 500116]
-codes = [543272, 532368]
+codes = [543272, 532368, 532648, 532670]
 stock_history = [{code: None for code in codes}, {code: None for code in codes}, {code: None for code in codes}]
 
 # Define the trading hours
@@ -94,4 +94,4 @@ while True:
                     print(f"Ignoring inactive stock with code {code}: {e}")
 
   # Sleep for a minute before checking again
-    t.sleep(90)
+    t.sleep(600)
