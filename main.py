@@ -12,7 +12,7 @@ keep_alive()
 
 bse = BSE(update_codes=True)
 start_time = time(3, 0)
-end_time = time(19, 30)
+end_time = time(23, 30)
 
 # codes = [ 543272, 532368, 532648, 532670, 539436, 543331, 532667, 500285, 532822,
 #      542655, 543688, 500116]
@@ -94,4 +94,4 @@ while True:
                     print(f"Ignoring inactive stock with code {code}: {e}")
 
   # Sleep for a minute before checking again
-    t.sleep(600)
+    t.sleep(90)
