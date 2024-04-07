@@ -65,15 +65,15 @@ while True:
                             message = f"Subject: {subject}\n\n{body}"
                         
                             try:
-                                conn = http.client.HTTPSConnection("api.pushover.net:443")
-                                conn.request(
-                                     "POST", "/1/messages.json",
-                                     urllib.parse.urlencode({
-                                     "token": os.environ.get('token'),
-                                     "user": os.environ.get("user"),
-                                     "message": f"{subject}\n{body}",
-                                }), {"Content-type": "application/x-www-form-urlencoded"})
-                                conn.getresponse()
+                                # conn = http.client.HTTPSConnection("api.pushover.net:443")
+                                # conn.request(
+                                #      "POST", "/1/messages.json",
+                                #      urllib.parse.urlencode({
+                                #      "token": os.environ.get('token'),
+                                #      "user": os.environ.get("user"),
+                                #      "message": f"{subject}\n{body}",
+                                # }), {"Content-type": "application/x-www-form-urlencoded"})
+                                # conn.getresponse()
                                 conn1 = http.client.HTTPSConnection("api.pushover.net:443")
                                 conn1.request(
                                     "POST", "/1/messages.json",
@@ -87,7 +87,7 @@ while True:
                                 print(f"ConnectionError: {e}")
                             finally:
                                 if conn1:
-                                    conn.close()
+                                    # conn.close()
                                     conn1.close()
                             
                 except bsedata.exceptions.InvalidStockException as e:
