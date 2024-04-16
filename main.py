@@ -80,7 +80,7 @@ while True:
                                     urllib.parse.urlencode({
                                     "token": os.environ.get('my_token'),
                                     "user": os.environ.get("my_user_id"),
-                                    "message": f"{subject}\n{body}",
+                                    "message": f"{subject}\n{body}\n{now}",
                                 }), {"Content-type": "application/x-www-form-urlencoded"})
                                 conn1.getresponse()
                             except RequestException as e:
