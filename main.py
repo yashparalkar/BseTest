@@ -89,6 +89,8 @@ while True:
                                 conn1.getresponse()
                             except RequestException as e:
                                 print(f"ConnectionError: {e}")
+                            except Exception as e:
+                                print(e)
                             finally:
                                 if conn1:
                                     conn.close()
@@ -96,6 +98,10 @@ while True:
                             
                 except bsedata.exceptions.InvalidStockException as e:
                     print(f"Ignoring inactive stock with code {code}: {e}")
+                    continue
+                except Exception as e:
+                    print(e)
+                    continue
 
   # Sleep for a minute before checking again
     t.sleep(900)
