@@ -14,12 +14,13 @@ bse = BSE(update_codes=True)
 start_time = time(3, 0)
 end_time = time(10, 30)
 
-codes = [
-    532368, 532648, 521064, 532667, 532670, 543272, 532505, 500285, 532525, 
-    539436, 532885, 532749, 532610, 500268, 543248, 523630, 500113, 514162, 
-    500470, 543330, 506022, 500339, 532234, 513599, 532822, 500116, 543331,
-    533162
-]
+# codes = [
+#     532368, 532648, 521064, 532667, 532670, 543272, 532505, 500285, 532525, 
+#     539436, 532885, 532749, 532610, 500268, 543248, 523630, 500113, 514162, 
+#     500470, 543330, 506022, 500339, 532234, 513599, 532822, 500116, 543331,
+#     533162
+# ]
+codes = [532648, 521064]
 # codes = [543272, 532368]
 stock_history = [{code: None for code in codes}, {code: None for code in codes}, {code: None for code in codes}]
 
@@ -69,15 +70,15 @@ while True:
                             message = f"Subject: {subject}\n\n{body}"
                         
                             try:
-                                conn = http.client.HTTPSConnection("api.pushover.net:443")
-                                conn.request(
-                                     "POST", "/1/messages.json",
-                                     urllib.parse.urlencode({
-                                     "token": os.environ.get('token'),
-                                     "user": os.environ.get("user"),
-                                     "message": f"{subject}\n{body}",
-                                }), {"Content-type": "application/x-www-form-urlencoded"})
-                                conn.getresponse()
+                                # conn = http.client.HTTPSConnection("api.pushover.net:443")
+                                # conn.request(
+                                #      "POST", "/1/messages.json",
+                                #      urllib.parse.urlencode({
+                                #      "token": os.environ.get('token'),
+                                #      "user": os.environ.get("user"),
+                                #      "message": f"{subject}\n{body}",
+                                # }), {"Content-type": "application/x-www-form-urlencoded"})
+                                # conn.getresponse()
                                 conn1 = http.client.HTTPSConnection("api.pushover.net:443")
                                 conn1.request(
                                     "POST", "/1/messages.json",
@@ -93,7 +94,7 @@ while True:
                                 print(e)
                             finally:
                                 if conn1:
-                                    conn.close()
+                                    # conn.close()
                                     conn1.close()
                             
                 except bsedata.exceptions.InvalidStockException as e:
@@ -104,4 +105,4 @@ while True:
                     continue
 
   # Sleep for a minute before checking again
-    t.sleep(900)
+    t.sleep(60)
