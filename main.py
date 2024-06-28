@@ -20,7 +20,7 @@ end_time = time(10, 30)
 #     500470, 543330, 506022, 500339, 532234, 513599, 532822, 500116, 543331,
 #     533162
 # ]
-codes = [532648, 521064]
+codes = [532368, 532648, 521064]
 # codes = [543272, 532368]
 stock_history = [{code: None for code in codes}, {code: None for code in codes}, {code: None for code in codes}]
 
