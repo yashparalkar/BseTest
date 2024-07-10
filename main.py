@@ -33,8 +33,8 @@ while True:
             for _i, code in enumerate(codes):
                 try:
                     quote = bse.getQuote(str(code))
-                    quote.pop('buy')
-                    quote.pop('sell')
+                    # quote.pop('buy')
+                    # quote.pop('sell')
                     
                     # Update stock history for the current interval
                     stock_history[2][code] = stock_history[1][code]
