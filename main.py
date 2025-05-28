@@ -8,6 +8,7 @@ import logging
 from requests.exceptions import RequestException
 import os
 
+bse = BSE(update_codes=True)
 keep_alive()
 for i in range(10):
     price = bse.getQuote("543272")['currentValue']
