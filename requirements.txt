@@ -1,2 +1,2 @@
-bsedata
+bsedata=>0.5.4
 Flask>=2.0.0
