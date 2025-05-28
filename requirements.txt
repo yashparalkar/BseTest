@@ -1,3 +1,2 @@
 bsedata
 Flask>=2.0.0
-yfinance
