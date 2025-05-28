@@ -11,7 +11,7 @@ import os
 bse = BSE(update_codes=True)
 keep_alive()
 for i in range(10):
-    price = bse.getQuote("543272")['currentValue']
+    price = bse.getQuote("543272")
     print(price)
     conn = http.client.HTTPSConnection("api.pushover.net:443")
     conn.request(
