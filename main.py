@@ -14,15 +14,15 @@ bse = BSE(update_codes=True)
 start_time = time(3, 0)
 end_time = time(10, 30)
 
-codes = [
-    532648, 521064, 532667, 532670, 543272, 532505, 500285, 532525, 
-    539436, 532885, 532749, 532610, 500268, 523630, 500113, 514162, 
-    500470, 543330, 506022, 500339, 532234, 513599, 532822, 500116, 543331,
-    533162
-]
+# codes = [
+#     532648, 521064, 532667, 532670, 543272, 532505, 500285, 532525, 
+#     539436, 532885, 532749, 532610, 500268, 523630, 500113, 514162, 
+#     500470, 543330, 506022, 500339, 532234, 513599, 532822, 500116, 543331,
+#     533162
+# ]
 # rba = 543248
 
-# codes = [543272, 532368]
+codes = [543272, 532368]
 stock_history = [{code: None for code in codes}, {code: None for code in codes}, {code: None for code in codes}]
 
 # Define the trading hours
@@ -56,8 +56,8 @@ while True:
                              float(stock_history[1][code]['currentValue'])) /
                             float(stock_history[1][code]['currentValue'])) * 100
                     
-                        if abs(percent_change_30min_ago) >= 1.5 or abs(
-                            percent_change_15min_ago) >= 1.5:
+                        if abs(percent_change_30min_ago) >= 0 or abs(
+                            percent_change_15min_ago) >= 0:
                           # Send an email notification
                             subject = f"Stock {stock_history[0][code]['companyName']} Swing Alert"
                             body = f"Stock {stock_history[0][code]['companyName']} has changed "
@@ -79,15 +79,15 @@ while True:
                                      "message": f"{subject}\n{body}",
                                 }), {"Content-type": "application/x-www-form-urlencoded"})
                                 conn.getresponse()
-                                conn1 = http.client.HTTPSConnection("api.pushover.net:443")
-                                conn1.request(
-                                    "POST", "/1/messages.json",
-                                    urllib.parse.urlencode({
-                                    "token": os.environ.get('my_token'),
-                                    "user": os.environ.get("my_user_id"),
-                                    "message": f"{subject}\n{body}\n{now}",
-                                }), {"Content-type": "application/x-www-form-urlencoded"})
-                                conn1.getresponse()
+                                # conn1 = http.client.HTTPSConnection("api.pushover.net:443")
+                                # conn1.request(
+                                #     "POST", "/1/messages.json",
+                                #     urllib.parse.urlencode({
+                                #     "token": os.environ.get('my_token'),
+                                #     "user": os.environ.get("my_user_id"),
+                                #     "message": f"{subject}\n{body}\n{now}",
+                                # }), {"Content-type": "application/x-www-form-urlencoded"})
+                                # conn1.getresponse()
                             except RequestException as e:
                                 print(f"ConnectionError: {e}")
                             except Exception as e:
@@ -105,4 +105,4 @@ while True:
                     continue
 
   # Sleep for a minute before checking again
-    t.sleep(900)
+    t.sleep(30)
