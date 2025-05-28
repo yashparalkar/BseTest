@@ -1,2 +1,2 @@
-bsedata>=0.6.0
+bsedata
 Flask>=2.0.0
