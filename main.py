@@ -9,6 +9,16 @@ from requests.exceptions import RequestException
 import os
 
 bse = BSE(update_codes=True)
+import requests
+
+# Patch BSE class to use custom headers
+BSE._BSE__headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+                  '(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'Accept': 'application/json',
+    'Accept-Language': 'en-US,en;q=0.9',
+}
+
 keep_alive()
 for i in range(10):
     price = bse.getQuote("543272")
